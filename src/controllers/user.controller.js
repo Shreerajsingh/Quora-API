@@ -12,7 +12,8 @@ async function addUser(req, res, next) {
             username: response.username
         })
     } catch (error) {
-        console.log(error);
+        // console.log(error);
+        next(error);
     }
 }
 

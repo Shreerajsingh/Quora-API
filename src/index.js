@@ -3,6 +3,7 @@ const bodyparser = require('body-parser');
 const apiRouter = require('./routes');
 const {PORT} = require('./config/server.config');
 const connectToDB = require('./config/db.config');
+const errorHandler = require('./utils/errorHandler');
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(bodyparser.text());
 
 console.log("Routing for /api");
 app.use('/api', apiRouter);
+
+app.use(errorHandler);
 
 app.listen(PORT, async () => {
     console.log(`server started at port: ${PORT}`);

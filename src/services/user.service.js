@@ -1,3 +1,4 @@
+const { BadRequest } = require('../Error');
 const {sanitizeUserId, sanitizeEmail} = require('../utils/index');
 
 class UserService {
@@ -7,14 +8,14 @@ class UserService {
 
     async addUser(data) {
         try {
-            if((sanitizeUserId(data.userId) && sanitizeEmail(data.email))) {
-                // throw new invalidCredentials("Invalid Username or Email");
+            if(!(sanitizeUserId(data.userId) && sanitizeEmail(data.email))) {
+                throw new BadRequest("Invalid Credentials Format!");
             }
     
             const response = await this.userRepository.addUser(data);
             
             return response;
-        } catch (error) {
+        } catch(error) {
             console.log(error);
         }
     }
