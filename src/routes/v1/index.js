@@ -1,7 +1,7 @@
 const express = require('express');
 
 const userRouter = require('./user.route');
-// const questionRouter = require('./question.route');
+const questionRouter = require('./question.route');
 // const answerRouter = require('./answer.route');
 // const commentRouter = require('./comment.route');
 // const likeRouter = require('./like.route');
@@ -11,7 +11,7 @@ const userRouter = require('./user.route');
 const v1Router = express();
 
 v1Router.use('/user', userRouter);
-// v1Router.use('/question', questionRouter);
+v1Router.use('/questions', questionRouter);
 // v1Router.use('/answer', answerRouter);
 // v1Router.use('/comment', commentRouter);
 // v1Router.use('/like', likeRouter);
