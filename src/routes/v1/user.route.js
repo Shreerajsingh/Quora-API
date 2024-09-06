@@ -1,14 +1,16 @@
 const express = require('express');
 
 const { userController } = require('../../controllers');
+const followRouter = require('./follow.route');
 
-const userRouter = express();
+const userRouter = express.Router();
 
-console.log("Routing for /api/v1/users post");
-userRouter.post('/users', userController.addUser);
+userRouter.post('/', userController.addUser);
 
-userRouter.get('/users/:id', userController.getUser);
+userRouter.get('/:id', userController.getUser);
 
-userRouter.put('/users/:id', userController.updateUser);
+userRouter.put('/:id', userController.updateUser);
+
+userRouter.use('/:followId/follow', followRouter);
 
 module.exports = userRouter;
