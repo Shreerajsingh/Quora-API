@@ -1,4 +1,6 @@
 module.exports = {
     UserService: require('./user.service'),
-    QuestionService: require('./question.service')
+    QuestionService: require('./question.service'),
+    AnswerService: require('./answer.service'),
+    CommentService: require('./comment.service')
 }
